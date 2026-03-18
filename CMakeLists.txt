@@ -16,6 +16,8 @@ endif()
 
 set(EXPORT_NAMESPACE "${PROJECT_NAME}::")
 
+include(GNUInstallDirs)
+
 # SimpleIni is a header-only library. The ConvertUTF.c/h files in this repository
 # are only required if users define SI_CONVERT_GENERIC. In that case, users must
 # manually copy and compile ConvertUTF.c into their own projects.
@@ -25,8 +27,6 @@ target_include_directories(${PROJECT_NAME} INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
-
-include(GNUInstallDirs)
 
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
